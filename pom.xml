@@ -35,14 +35,45 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
         </dependency>
+
+        <!-- DEPENDENCIA HIBERNATE PANACHE -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-orm-panache</artifactId>
+            <version>3.40.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- DEPENDENCIA JDBC -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-postgresql</artifactId>
+            <version>3.40.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- DEPENDENCIA LOMBOCK -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.48</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- DEPENDENCIA QUARKUS REST -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest</artifactId>
+            <version>3.40.1</version>
+            <scope>compile</scope>
         </dependency>
-        <!-- Source: https://mvnrepository.com/artifact/io.quarkus/quarkus-rest-jackson -->
+
+        <!-- DEPENDENCIA REST JACKSON -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-jackson</artifactId>
+            <version>3.40.1</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

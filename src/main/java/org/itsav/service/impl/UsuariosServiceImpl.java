@@ -1,8 +1,8 @@
 package org.itsav.service.impl;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import org.itsav.UsuariosService;
 import org.itsav.domain.records.InfoUsuarioDTO;
+import org.itsav.service.UsuariosService;
 
 import java.util.ArrayList;
 import java.util.List;

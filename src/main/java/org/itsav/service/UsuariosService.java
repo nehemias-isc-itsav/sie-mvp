@@ -1,4 +1,4 @@
-package org.itsav;
+package org.itsav.service;
 
 import org.itsav.domain.records.InfoUsuarioDTO;
 
