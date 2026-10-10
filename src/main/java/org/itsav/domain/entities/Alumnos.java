@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -65,4 +67,7 @@ public class Alumnos {
 
     @Column(name = "fecha_actualizacion", nullable = false)
     private OffsetDateTime fechaActualizacion;
+
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<RelAlumnosDirecciones> direcciones = new HashSet<>();
 }

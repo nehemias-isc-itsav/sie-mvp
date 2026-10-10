@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "ctl_discapacidades_medicas")
 @Data
@@ -21,4 +24,7 @@ public class DiscapacidadesMedicas {
 
     @Column(name = "descripcion", nullable = false, length = 255)
     private String descripcion;
+
+    @OneToMany(mappedBy = "discapacidad", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RelDiscapacidadesDatosMedicos> datosMedicos = new HashSet<>();
 }

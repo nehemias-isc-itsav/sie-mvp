@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -34,12 +36,16 @@ public class Direcciones {
     @Column(name = "cp", nullable = false, length = 5)
     private String cp;
 
-    @Column(name = "ciudad", nullable = false)
-    private Long ciudad;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ciudad", nullable = false)
+    private Ciudades ciudad;
 
     @Column(name = "fecha_creacion", nullable = false)
     private OffsetDateTime fechaCreacion;
 
     @Column(name = "fecha_actualizacion", nullable = false)
     private OffsetDateTime fechaActualizacion;
+
+    @OneToMany(mappedBy = "direccion", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RelAlumnosDirecciones> alumnos = new HashSet<>();
 }

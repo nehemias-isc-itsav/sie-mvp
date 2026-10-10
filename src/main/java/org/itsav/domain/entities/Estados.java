@@ -27,6 +27,7 @@ public class Estados{
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
-    @Column(name = "pais", nullable = false)
-    private Long pais;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pais", nullable = false)
+    private Paises pais;
 }

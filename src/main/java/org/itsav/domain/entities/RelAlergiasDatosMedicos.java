@@ -15,10 +15,12 @@ import java.util.UUID;
 @NoArgsConstructor
 public class RelAlergiasDatosMedicos {
     @Id
-    @Column(name = "alergia")
-    private Integer alergia;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "alergia")
+    private Alergias alergia;
 
     @Id
-    @Column(name = "dato_medico")
-    private UUID datoMedico;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dato_medico")
+    private DatosMedicos datoMedico;
 }

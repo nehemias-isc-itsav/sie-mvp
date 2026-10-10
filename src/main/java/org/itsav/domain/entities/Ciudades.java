@@ -28,6 +28,7 @@ public class Ciudades {
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
-    @Column(name = "estado", nullable = false)
-    private Long estado;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estado", nullable = false)
+    private Estados estado;
 }

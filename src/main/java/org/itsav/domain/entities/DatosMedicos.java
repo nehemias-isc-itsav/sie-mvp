@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -22,12 +24,19 @@ public class DatosMedicos {
     @Column(name = "tipo_sangre", length = 3)
     private String tipoSangre;
 
-    @Column(name = "alumno", nullable = false, unique = true)
-    private UUID alumno;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "alumno", nullable = false)
+    private Alumnos alumno;
 
     @Column(name = "fecha_creacion", nullable = false)
     private OffsetDateTime fechaCreacion;
 
     @Column(name = "fecha_actualizacion", nullable = false)
     private OffsetDateTime fechaActualizacion;
+
+    @OneToMany(mappedBy = "datoMedico", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RelAlergiasDatosMedicos> alergias = new HashSet<>();
+
+    @OneToMany(mappedBy = "datoMedico", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RelDiscapacidadesDatosMedicos> discapacidades = new HashSet<>();
 }

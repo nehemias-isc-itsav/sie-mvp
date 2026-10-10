@@ -15,10 +15,12 @@ import java.util.UUID;
 @AllArgsConstructor
 public class RelDiscapacidadesDatosMedicos {
     @Id
-    @Column(name = "discapacidad")
-    private Integer discapacidad;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "discapacidad")
+    private DiscapacidadesMedicas discapacidad;
 
     @Id
-    @Column(name = "dato_medico")
-    private UUID datoMedico;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dato_medico")
+    private DatosMedicos datoMedico;
 }
