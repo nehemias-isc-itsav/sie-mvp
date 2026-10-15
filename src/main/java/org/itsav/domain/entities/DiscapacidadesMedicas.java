@@ -22,7 +22,7 @@ public class DiscapacidadesMedicas {
     @Column(name = "nombre", nullable = false, length = 50, unique = true)
     private String nombre;
 
-    @Column(name = "descripcion", nullable = false, length = 255)
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
     @OneToMany(mappedBy = "discapacidad", cascade = CascadeType.ALL, orphanRemoval = true)
