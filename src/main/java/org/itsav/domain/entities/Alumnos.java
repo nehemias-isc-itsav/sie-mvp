@@ -1,5 +1,6 @@
 package org.itsav.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -68,6 +69,7 @@ public class Alumnos {
     @Column(name = "fecha_actualizacion", nullable = false)
     private OffsetDateTime fechaActualizacion;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<RelAlumnosDirecciones> direcciones = new HashSet<>();
 }

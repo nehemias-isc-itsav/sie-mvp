@@ -5,6 +5,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.itsav.domain.entities.*;
+import org.itsav.domain.records.AlumnoRequest;
 import org.itsav.domain.records.PaisRequest;
 import org.itsav.service.*;
 
@@ -86,6 +87,51 @@ public class SIEController {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(alumno).build();
+    }
+    @GET
+    @Path("alumnos/matricula/{numControl}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerAlumnoPorMatricula(@PathParam("numControl") String numControl) {
+        Alumnos alumno = alumnosService.findByNumControl(numControl);
+        if (alumno == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(alumno).build();
+    }
+
+    @POST
+    @Path("alumnos")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response agregarAlumno(AlumnoRequest req) {
+        Alumnos nuevoAlumno = alumnosService.addAlumnos(req);
+        return Response.status(Response.Status.CREATED).entity(nuevoAlumno).build();
+    }
+
+    @PUT
+    @Path("alumnos/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response actualizarAlumno(@PathParam("id") UUID id, AlumnoRequest req) {
+        Alumnos alumnoActualizado = alumnosService.updateAlumnos(id, req);
+        return Response.ok(alumnoActualizado).build();
+    }
+
+    @PATCH
+    @Path("alumnos/{id}/desactivar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response desactivarAlumno(@PathParam("id") UUID id) {
+        Alumnos alumnoDesactivado = alumnosService.deactivateAlumno(id);
+        return Response.ok(alumnoDesactivado).build();
+    }
+
+    @POST
+    @Path("alumnos/batch")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response agregarAlumnosBatch(List<AlumnoRequest> requests) {
+        List<Alumnos> creados = alumnosService.addAlumnosBatch(requests);
+        return Response.status(Response.Status.CREATED).entity(creados).build();
     }
 
     //END-POINT paises
