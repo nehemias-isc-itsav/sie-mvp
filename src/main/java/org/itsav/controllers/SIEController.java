@@ -5,7 +5,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.itsav.domain.entities.*;
-import org.itsav.domain.records.guardarPaisReqDTO;
+import org.itsav.domain.records.PaisRequest;
 import org.itsav.service.*;
 
 
@@ -112,10 +112,12 @@ public class SIEController {
 
     // Agregar paises desde la API
     @POST
-    @Path("agregar_pais")
+    @Path("paises")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response agregarPais(guardarPaisReqDTO reqDTO){
-        return Response.ok(paisesService.addCountry(reqDTO)).build();
+    public Response agregarPais(PaisRequest reqDTO){
+        Paises nuevoPais = paisesService.addCountry(reqDTO);
+        return Response.status(Response.Status.CREATED).entity(nuevoPais).build();
     }
 
     //END-POINT estados

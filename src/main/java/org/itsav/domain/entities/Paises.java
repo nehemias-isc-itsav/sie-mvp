@@ -7,12 +7,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "ctl_paises")
-/*
 @Data
 @AllArgsConstructor
-@
-
- */
+@NoArgsConstructor
 public class Paises {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,30 +25,6 @@ public class Paises {
 
     public Paises(String nombre, String prefijo) {
         this.nombre = nombre;
-        this.prefijo = prefijo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getPrefijo() {
-        return prefijo;
-    }
-
-    public void setPrefijo(String prefijo) {
         this.prefijo = prefijo;
     }
 }
